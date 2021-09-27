@@ -1,4 +1,4 @@
-package com.lazykeru.tpwebjavaimt.data;
+package com.lazykeru.tpwebjavaimt.data.model;
 
 public class Person {
 
@@ -8,8 +8,7 @@ public class Person {
 	private String phone;
 	private String city;
 
-	public Person() {
-	};
+	public Person() {};
 
 	public Person(int id, String name, String surname, String phone, String city) {
 		super();
