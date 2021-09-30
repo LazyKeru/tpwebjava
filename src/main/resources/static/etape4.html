@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contacts</title>
+	<link rel="stylesheet" href="css/w3.css">
+	<link rel="stylesheet" href="css/appli.css">
+</head>
+
+<body>
+	<h1>Annuaire</h1>
+ 	<div id="idForm">
+		<label for="idFirstName">Prénom&nbsp;: </label>
+		<span><input id="idFirstName" type="text" placeholder="John">
+			<span style="color: red">*</span>
+		</span>
+		<label for="idName">NOM&nbsp;: </label>
+		<span><input id="idName" type="text" placeholder="SNOW">
+			<span style="color: red">*</span>
+		</span>
+		<label for="idPhone">Téléphone : </label>
+		<span><input id="idPhone" type="text" placeholder="0600000001">
+			<span style="color: red">*</span>
+		</span>
+		<label for="idCity">Ville : </label>
+		<span><input id="idCity" type="text" placeholder="Winterfell">
+			<span style="color: red">*</span>
+		</span>
+		<button id="idOK">Ajouter</button>
+		<button id="idNew">Nouveau</button>
+		<input id="idId" type="hidden" value="">
+	</div>
+	<h2>Contacts obtenus</h2>
+	<button id="idDel" disabled="disabled">Supprimer</button>
+	<table class="w3-table-all" id="idContactsTable">
+		<tbody>
+			<tr>
+				<th>&nbsp;</th>
+				<th>Prénom</th>
+				<th>NOM</th>
+				<th>Téléphone</th>
+				<th>Ville</th>
+			</tr>
+		</tbody>
+	</table>
+	<script src="js/etape4.js"></script>
+</body>
+
+</html>
