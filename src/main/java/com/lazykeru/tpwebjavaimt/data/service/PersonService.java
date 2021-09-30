@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
 
 @Service
 public class PersonService implements PersonItf {
@@ -26,12 +28,21 @@ public class PersonService implements PersonItf {
 		return (Collection<Person>) (hm.values());
 	}
 	
+	
+	public Collection<Person> getFromName(String name) {
+		Collection<Person> res = new ArrayList<Person>();
+		for(int i : hm.keySet()) {
+			if(hm.get(i).getName().equals(name))
+				res.add(hm.get(i));
+		}
+		return res;
+	}
+	
+	
 	public Person getFromId(int id) {
 		return hm.get(id);
 	}
 	
-	//@Override
-	//public List<Person> getFromName(String name);
 	
 	public boolean deleteFromId(int id) {
 		if(hm.remove(id) != null) return true;
