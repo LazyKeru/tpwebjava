@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>Getting Started: Serving Web Content</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <div class="container">
+		<h2>
+			List:
+		</h2>
+	</div>
+	<div class="divTable">
+		<div class="headRow">
+			<div class="headCell" data-title="Id">Id</div>
+			<div class="headCell" data-title="Nom">Nom</div>
+			<div class="headCell" data-title="Prenom">Prenom</div>
+			<div class="headCell" data-title="Telephone">Telephone</div>
+			<div class="headCell" data-title="Ville">Ville</div>
+			<div class="headCell" data-title="Actions">Actions</div>
+		</div>
+		<th:block th:each="entry: ${entries}">
+			<div class="row">
+				<div class="bodyCell" data-title="id">
+					<span th:text="${entry.getId()}"> Id </span>
+				</div>
+				<div class="bodyCell" data-title="name">
+					<span th:text="${entry.getName()}"> Name </span>
+				</div>
+				<div class="bodyCell" data-title="surname">
+					<span th:text="${entry.getSurname()}"> Surname </span>
+				</div>
+				<div class="bodyCell" data-title="phone">
+					<span th:text="${entry.getPhone()}"> Phone </span>
+				</div>
+				<div class="bodyCell" data-title="city">
+					<span th:text="${entry.getCity()}"> City </span>
+				</div>
+			</div>
+		</th:block>
+	</div>
+</body>
+</html>
