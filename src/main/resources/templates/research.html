@@ -3,6 +3,7 @@
 <head> 
     <title>Getting Started: Serving Web Content</title> 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="/proj.css">
 </head>
 <body>
     <div class="container">
@@ -20,20 +21,20 @@
 			<div class="headCell" data-title="Actions">Actions</div>
 		</div>
 		<th:block th:each="entry: ${entries}">
-			<div class="row">
-				<div class="bodyCell" data-title="id">
+			<div class="divRow">
+				<div class="divCell" data-title="id">
 					<span th:text="${entry.getId()}"> Id </span>
 				</div>
-				<div class="bodyCell" data-title="name">
+				<div class="divCell" data-title="name">
 					<span th:text="${entry.getName()}"> Name </span>
 				</div>
-				<div class="bodyCell" data-title="surname">
+				<div class="divCell" data-title="surname">
 					<span th:text="${entry.getSurname()}"> Surname </span>
 				</div>
-				<div class="bodyCell" data-title="phone">
+				<div class="divCell" data-title="phone">
 					<span th:text="${entry.getPhone()}"> Phone </span>
 				</div>
-				<div class="bodyCell" data-title="city">
+				<div class="divCell" data-title="city">
 					<span th:text="${entry.getCity()}"> City </span>
 				</div>
 			</div>
