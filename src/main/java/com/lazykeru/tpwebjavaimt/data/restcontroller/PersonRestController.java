@@ -7,6 +7,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import java.util.Collection;
 
@@ -20,13 +23,23 @@ public class PersonRestController {
 	PersonItf pi;
 	
 	// Will return the list of people as a json list / No visual side
-	@GetMapping("/person/list")
+	@GetMapping("/person")
 	public Collection<Person> getAll() {
 		return pi.getAll();
 	}
 	
+	// Add person
+	@PostMapping("/person")
+	public ResponseEntity<String> add(@RequestBody Person newPerson) {
+		if (pi.getFromId(newPerson.getId()) != null){
+			return ResponseEntity.status(HttpStatus.CONFLICT).body("Personne deja existante");
+		}
+		pi.addPerson(newPerson);
+		return ResponseEntity.status(HttpStatus.CREATED).body("http://localhost:8080/rechercher/"+newPerson.getId());
+	}
+	
 	// Research by id
-	@GetMapping("/person/id/{id}")
+	@GetMapping("/person/{id}")
 	public ResponseEntity<?> GetById(@PathVariable int id) {
 		if (pi.getFromId(id) == null){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No one found corresponding to the id");
@@ -44,7 +57,7 @@ public class PersonRestController {
 	}
 	
 	// Delete by id
-	@DeleteMapping("/person/id/{id}")
+	@DeleteMapping("/person/{id}")
 	public ResponseEntity<?> DeleteById(@PathVariable int id) {
 		if (pi.getFromId(id) == null){
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("No one found to be deleted with this ID");
@@ -53,15 +66,12 @@ public class PersonRestController {
 		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
 	}
 	
-	/*@DeleteMapping("/annuaire/supprimer/{id}")
-	public String suppprime(Person person, @PathVariable int id) {
-		PersonService.deleteFromId(id);
-		person.addAttribute("entries", PersonService.getAll());
-		return "redirect:/annuaire/recherche";
-	}*/
-	
-	// controleur d'envoi des personnes a la vue
-    /*public String listPersons(@ModelAttribute("persons") Collection<Person> persons) {
-        return "list";
-    }*/
+	@PutMapping("/entree")
+	public ResponseEntity<?> remplace(@RequestBody Person updatedPerson) {		
+		if (pi.getFromId(updatedPerson.getId()) == null){
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Pas de personne a mettre a jour avec cet ID");
+		}
+		pi.addPerson(updatedPerson);
+		return ResponseEntity.status(HttpStatus.NO_CONTENT).build();		
+	}
 }

@@ -18,9 +18,9 @@ public class PersonService implements PersonItf {
 	public PersonService() {
 		super();
 		hm = new HashMap<Integer,Person>();
-		hm.put(1, new Person(1,"Eddard", "Stark", "0606060606", "Lille"));
-		hm.put(2, new Person(2,"Marry", "Poppin", "0606060606", "London"));
-		hm.put(3, new Person(3,"Joe", "Biden", "0606060606", "New-York"));
+		hm.put(0, new Person(0,"Eddard", "Stark", "0606060606", "Lille"));
+		hm.put(1, new Person(1,"Marry", "Poppin", "0606060606", "London"));
+		hm.put(2, new Person(2,"Joe", "Biden", "0606060606", "New-York"));
 	}
 	
 	public Collection<Person> getAll() {
